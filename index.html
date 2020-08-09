@@ -3,22 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Name Animator</title>
+    <title>Document</title>
+    <style>
+    #card{
+        width: 400px;
+        height: 250px;
+        border: 1px solid;
+        float:left;
+        margin-left: 100px;
+    }
+    .container{
+        float: left;
+        
+    }
+   
+    
+</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="">
-        <input type="text" id="inputfield" onkeyup="keyPressed()" placeholder="ENTER YOUR NAME">
-    </form>
-
     
-    <input type="button" value="Big" onclick="document.getElementById('inputfield').style.fontSize='100px'"><br>
-    <!-- <input type="button" value="Color" onclick="document.getElementById('inputfield').style.color='red'"> -->
-    <input type="button" value="Upper Case" onclick="document.getElementById('inputfield').style.textTransform='uppercase'"><br>
-    <input type="button" value="hide" onclick="document.getElementById('inputfield').style.visibility='hidden'"><br>
-    <input type="button" value="show" onclick="document.getElementById('inputfield').style.visibility='visible'" ><br>
-    <input type="button" value="Lower Case" onclick="document.getElementById('inputfield').style.textTransform='lowercase'"><br>
-    <script>
+                <h1>Buisness Card Designer</h1>
+       
+    <!-- input section  -->
+   <div class="container">
+        <form action="" id="cardInfo" class="form-horiontal">
+            
+                <label for="inputCompany" class="col-sm-3control-label" > Company Name: &nbsp; &nbsp; &nbsp;</label>
+                <input type="text" class="form-control" id="inputCompany" onkeyup="printCompany()"><br>
 
-    </script>
+
+
+                <label for="inputMessage" class="col-sm-3control-label" > Company Message: &nbsp;</label>
+                <input type="text" class="form-control" id="inputMessage" onkeyup="printMessage()"><br>
+
+                <label for="inputBg" class="col-sm-3control-label" > Background color &nbsp; &nbsp; </label>
+                <input type="color" class="form-control" id="inputBg" value="#ffb74d" onchange="changeBg()"><br>
+
+                <label for="inputText" class="col-sm-3control-label" > Text color : &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </label>
+                <input type="color" class="form-control" id="inputText" value="#262626" onchange="changeText()" ><br>
+
+                <label for="big"> Big: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="button" value="big" onclick="big()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="small"> Small: &nbsp;&nbsp;&nbsp;</label>
+                <input type="button" value="small" onclick="small()"><br>
+                
+
+
+                <label for="inputName" class="col-sm-3control-label" > Your Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+                <input type="text" class="form-control" id="inputName"  onkeyup="printName()"><br>
+
+
+                <label for="inputJob" class="col-sm-3control-label" > Job Title: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="text" class="form-control" id="inputJob" onkeyup="printJob()"><br>
+
+
+                <label for="inputEmail" class="col-sm-3control-label" > Job Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="email" class="form-control" id="inputEmail" onkeyup="printEmail()"><br>
+
+
+                <label for="inputTelephone" class="col-sm-3control-label" > Telephone Number: </label>
+                <input type="tel" class="form-control" id="inputTelephone" onkeyup="printTelephone()"><br>
+
+<input type="button" value="Submit" onclick="fromSubmit()">
+<input type="button" value="Clear" onclick="fromReset()">
+
+        </form>
+    
+    </div>
+
+
+        <div id="card">
+            <h3 id="outputCompany">Company Name</h3>
+            <p id="outputMessage">Company Message</p>
+            <p id="outputName">Your Name:</p>
+            <p id="outputJob">Job Title</p>
+            <p id="outputEmail">Email:</p>
+            <p id="outputTelephone">Tel:</p>
+        </div>
+
+    <script src="javascript.js"></script>
 </body>
 </html>
