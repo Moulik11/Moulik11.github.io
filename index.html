@@ -3,85 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-    #card{
-        width: 400px;
-        height: 250px;
-        border: 1px solid;
-        float:left;
-        margin-left: 100px;
-    }
-    .container{
-        float: left;
-        
-    }
-   
-    
-</style>
-<link rel="stylesheet" href="style.css">
+    <title>JavaScript Tip Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="keywords" content="hasbasdibabdiwhyisthe" />
+
 </head>
 <body>
-    
-                <h1>Buisness Card Designer</h1>
-       
-    <!-- input section  -->
-   <div class="container">
-        <form action="" id="cardInfo" class="form-horiontal">
-            
-                <label for="inputCompany" class="col-sm-3control-label" > Company Name: &nbsp; &nbsp; &nbsp;</label>
-                <input type="text" class="form-control" id="inputCompany" onkeyup="printCompany()"><br>
-
-
-
-                <label for="inputMessage" class="col-sm-3control-label" > Company Message: &nbsp;</label>
-                <input type="text" class="form-control" id="inputMessage" onkeyup="printMessage()"><br>
-
-                <label for="inputBg" class="col-sm-3control-label" > Background color &nbsp; &nbsp; </label>
-                <input type="color" class="form-control" id="inputBg" value="#ffb74d" onchange="changeBg()"><br>
-
-                <label for="inputText" class="col-sm-3control-label" > Text color : &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </label>
-                <input type="color" class="form-control" id="inputText" value="#262626" onchange="changeText()" ><br>
-
-                <label for="big"> Big: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                <input type="button" value="big" onclick="big()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <label for="small"> Small: &nbsp;&nbsp;&nbsp;</label>
-                <input type="button" value="small" onclick="small()"><br>
-                
-
-
-                <label for="inputName" class="col-sm-3control-label" > Your Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
-                <input type="text" class="form-control" id="inputName"  onkeyup="printName()"><br>
-
-
-                <label for="inputJob" class="col-sm-3control-label" > Job Title: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                <input type="text" class="form-control" id="inputJob" onkeyup="printJob()"><br>
-
-
-                <label for="inputEmail" class="col-sm-3control-label" > Job Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                <input type="email" class="form-control" id="inputEmail" onkeyup="printEmail()"><br>
-
-
-                <label for="inputTelephone" class="col-sm-3control-label" > Telephone Number: </label>
-                <input type="tel" class="form-control" id="inputTelephone" onkeyup="printTelephone()"><br>
-
-<input type="button" value="Submit" onclick="fromSubmit()">
-<input type="button" value="Clear" onclick="fromReset()">
-
-        </form>
-    
-    </div>
-
-
-        <div id="card">
-            <h3 id="outputCompany">Company Name</h3>
-            <p id="outputMessage">Company Message</p>
-            <p id="outputName">Your Name:</p>
-            <p id="outputJob">Job Title</p>
-            <p id="outputEmail">Email:</p>
-            <p id="outputTelephone">Tel:</p>
+    <div id="container">
+        <h1>Tip Calculator</h1>
+        <hr>
+        <div>
+            <label for="">Total Bill:</label>
+           <input type="text" placeholder="Enter Your Total Bill....... " id="billTotal">
         </div>
+        <div>
+            <label for="">Tip:</label>
+            <input type="range" value="0" id="tipInput">
+            <span id="tipOutput"></span>
+            <p id="funnyOne"></p>
+        </div>
+        <div>
+            <label for="">Split(number of people)</label>
+            <input type="range" name="" id="splitInput" min="1" max="20" value="1">
+            <span id="splitOutput"></span>
+        </div>
+        <hr>
+        <div>
+            <div>
+                <label for="">New Bill(per person):</label><span id="newBill"></span>
+            </div>
+            <div>
+                <label for="">Tip Amount(per person):</label><span id="tipEach"></span>
+            </div>
+        </div>
+        <div>
+            <input type="button" value="Calculate Tip Again" id="resetButton" onclick="refreh()">
+        </div>
+    </div>
+    <script>
+        document.getElementById('container').onclick = function(){
+            var bill = Number(document.getElementById("billTotal").value);
+            var tipPercent = document.getElementById("tipInput").value;
+            var split = document.getElementById("splitInput").value;
+            var tipValue = bill * (tipPercent/100);
+            var newBillEach = (bill + tipValue) / split
+            var tipEach = tipValue/split
+            var minTip = 60
+            if(tipPercent>minTip){
+                document.getElementById('funnyOne').innerHTML = "Indians won't give this much tip " + "&#x1F602;" + "&#x1F602;" + "&#x1F602;"
+            }
 
-    <script src="javascript.js"></script>
+
+
+           document.getElementById ('tipOutput').innerHTML = tipPercent + "%" ;
+           document.getElementById ('splitOutput').innerHTML = split  ;
+           document.getElementById('newBill').innerHTML = "&#x20B9;" + newBillEach.toFixed(2);
+           document.getElementById('tipEach').innerHTML = "&#x20B9;" +tipEach.toFixed(2);
+        }
+        function refreh(){
+            window.location.reload()
+        }
+
+
+    </script>
+    
 </body>
 </html>
